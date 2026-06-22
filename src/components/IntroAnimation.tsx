@@ -9,7 +9,7 @@ const LETTERS = NAME.split('');
 
 // Premium luxury ease-out curve (easeOutExpo)
 // It handles the structural movement perfectly without jerking
-const LUXURY_EASE = [0.16, 1, 0.3, 1];
+const LUXURY_EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function IntroAnimation({
   onComplete,
@@ -44,7 +44,7 @@ export default function IntroAnimation({
 
   return (
     <AnimatePresence>
-      {phase !== 'done' && (
+      {(phase as string) !== 'done' && (
         <div className='fixed inset-0 z-[9999] pointer-events-none flex items-center justify-center overflow-hidden'>
           {/* Black backdrop fading independently */}
           <motion.div
