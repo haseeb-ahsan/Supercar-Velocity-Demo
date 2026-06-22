@@ -1,0 +1,74 @@
+
+@import 'tailwindcss';
+
+:root {
+  --background: #000000; /* primary background, pure black */
+  --surface: #111111; /* cards, panels, raised surfaces */
+  --accent: #c0c0c0; /* silver/platinum, buttons & highlights */
+  --text: #ffffff; /* all body and heading text */
+  --text-muted: #999999; /* secondary, less important text */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-accent: var(--accent);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Infinite horizontal marquee used by the Featured Brands strip.
+   The track is rendered twice in the component; we translate exactly
+   -50% so the loop point is invisible. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+/* Visible keyboard focus everywhere, in the brand's silver accent
+   rather than the browser default blue. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+.perspective {
+  perspective: 1000px;
+}
+
+
